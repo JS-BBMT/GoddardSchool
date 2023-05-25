@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\common.props"></Import>
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+    <AssemblyName>FranchiseePortal.Application</AssemblyName>
+    <PackageId>FranchiseePortal.Application</PackageId>
+    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+    <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <RootNamespace>FranchiseePortal</RootNamespace>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Abp.EntityFrameworkCore.EFPlus" Version="6.5.0" />
+    <PackageReference Include="NPOI" Version="2.5.4" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.33" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\api\FranchiseePortal.AuthorizationWebApiClient\src\FranchiseePortal.AuthorizationWebApiClient\FranchiseePortal.AuthorizationWebApiClient.csproj" />
+    <ProjectReference Include="..\api\FranchiseePortal.CareersWebApiClient\src\FranchiseePortal.CareersWebApiClient\FranchiseePortal.CareersWebApiClient.csproj" />
+    <ProjectReference Include="..\api\FranchiseePortal.ContentWebApiClient\src\FranchiseePortal.ContentWebApiClient\FranchiseePortal.ContentWebApiClient.csproj" />
+    <ProjectReference Include="..\api\FranchiseePortal.FacultiesWebApiClient\src\FranchiseePortal.FacultiesWebApiClient\FranchiseePortal.FacultiesWebApiClient.csproj" />
+    <ProjectReference Include="..\api\FranchiseePortal.FeaturesWebApiClient\src\FranchiseePortal.FeaturesWebApiClient\FranchiseePortal.FeaturesWebApiClient.csproj" />
+    <ProjectReference Include="..\api\FranchiseePortal.LeadsWebApiClient\src\FranchiseePortal.LeadsWebApiClient\FranchiseePortal.LeadsWebApiClient.csproj" />
+    <ProjectReference Include="..\api\FranchiseePortal.SchoolEventsWebApiClient\src\FranchiseePortal.SchoolEventsWebApiClient\FranchiseePortal.SchoolEventsWebApiClient.csproj" />
+    <ProjectReference Include="..\api\FranchiseePortal.SchoolsWebApiClient\src\FranchiseePortal.SchoolsWebApiClient\FranchiseePortal.SchoolsWebApiClient.csproj" />
+    <ProjectReference Include="..\api\FranchiseePortal.ToursWebApiClient\src\FranchiseePortal.ToursWebApiClient\FranchiseePortal.ToursWebApiClient.csproj" />
+    <ProjectReference Include="..\FranchiseePortal.Application.Shared\FranchiseePortal.Application.Shared.csproj" />
+    <ProjectReference Include="..\FranchiseePortal.Core\FranchiseePortal.Core.csproj" />
+    <ProjectReference Include="..\FranchiseePortal.EntityFrameworkCore\FranchiseePortal.EntityFrameworkCore.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Common\Extensions\" />
+  </ItemGroup>
+</Project>

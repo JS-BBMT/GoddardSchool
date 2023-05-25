@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\common.props"></Import>
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>FranchiseePortal</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Abp.Web.Common" Version="6.5.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.10" />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" Version="6.0.1" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\api\FranchiseePortal.CareersWebApiClient\src\FranchiseePortal.CareersWebApiClient\FranchiseePortal.CareersWebApiClient.csproj" />
+    <ProjectReference Include="..\api\FranchiseePortal.ContentWebApiClient\src\FranchiseePortal.ContentWebApiClient\FranchiseePortal.ContentWebApiClient.csproj" />
+    <ProjectReference Include="..\api\FranchiseePortal.FacultiesWebApiClient\src\FranchiseePortal.FacultiesWebApiClient\FranchiseePortal.FacultiesWebApiClient.csproj" />
+    <ProjectReference Include="..\api\FranchiseePortal.FeaturesWebApiClient\src\FranchiseePortal.FeaturesWebApiClient\FranchiseePortal.FeaturesWebApiClient.csproj" />
+    <ProjectReference Include="..\api\FranchiseePortal.LeadsWebApiClient\src\FranchiseePortal.LeadsWebApiClient\FranchiseePortal.LeadsWebApiClient.csproj" />
+    <ProjectReference Include="..\api\FranchiseePortal.SchoolEventsWebApiClient\src\FranchiseePortal.SchoolEventsWebApiClient\FranchiseePortal.SchoolEventsWebApiClient.csproj" />
+    <ProjectReference Include="..\api\FranchiseePortal.TestimonialsWebApiClient\src\FranchiseePortal.TestimonialsWebApiClient\FranchiseePortal.TestimonialsWebApiClient.csproj" />
+    <ProjectReference Include="..\api\FranchiseePortal.ToursWebApiClient\src\FranchiseePortal.ToursWebApiClient\FranchiseePortal.ToursWebApiClient.csproj" />
+    <ProjectReference Include="..\FranchiseePortal.Core.Shared\FranchiseePortal.Core.Shared.csproj" />
+  </ItemGroup>
+</Project>

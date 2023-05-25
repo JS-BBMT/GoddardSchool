@@ -1,0 +1,1609 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Goddard iPaaS Leads API",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/v1/franchise-leads": {
+      "post": {
+        "tags": [
+          "FranchiseLeads"
+        ],
+        "parameters": [
+          {
+            "name": "appName",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/FranchiseLead"
+                  }
+                ],
+                "nullable": true
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/FranchiseLead"
+                  }
+                ],
+                "nullable": true
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/FranchiseLead"
+                  }
+                ],
+                "nullable": true
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v1/school-leads": {
+      "get": {
+        "tags": [
+          "SchoolParentLeads"
+        ],
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "SchoolId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "ChildAge",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            }
+          },
+          {
+            "name": "StartDate",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "nullable": true
+            }
+          },
+          {
+            "name": "EndDate",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "nullable": true
+            }
+          },
+          {
+            "name": "ProgramsOfInterest",
+            "in": "query",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "nullable": true
+            }
+          },
+          {
+            "name": "Page",
+            "in": "query",
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LeadDtoPaginationDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LeadDtoPaginationDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LeadDtoPaginationDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "SchoolParentLeads"
+        ],
+        "parameters": [
+          {
+            "name": "async",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          },
+          {
+            "name": "appName",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Lead"
+                  }
+                ],
+                "nullable": true
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Lead"
+                  }
+                ],
+                "nullable": true
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Lead"
+                  }
+                ],
+                "nullable": true
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LeadDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LeadDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LeadDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/school-leads/{id}": {
+      "get": {
+        "tags": [
+          "SchoolParentLeads"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LeadDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LeadDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LeadDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/school-leads/guid-id/{guidId}": {
+      "get": {
+        "tags": [
+          "SchoolParentLeads"
+        ],
+        "parameters": [
+          {
+            "name": "guidId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LeadDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LeadDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LeadDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/school-leads/query-by-ids": {
+      "post": {
+        "tags": [
+          "SchoolParentLeads"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "nullable": true
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "nullable": true
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "nullable": true
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/LeadDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/LeadDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/LeadDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/school-leads/internal": {
+      "post": {
+        "tags": [
+          "SchoolParentLeads"
+        ],
+        "parameters": [
+          {
+            "name": "async",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          },
+          {
+            "name": "appName",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/LeadDtoInternal"
+                  }
+                ],
+                "nullable": true
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/LeadDtoInternal"
+                  }
+                ],
+                "nullable": true
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/LeadDtoInternal"
+                  }
+                ],
+                "nullable": true
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LeadDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LeadDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LeadDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/school-leads/{id}/tour": {
+      "put": {
+        "tags": [
+          "SchoolParentLeads"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/TourLeadInputDto"
+                  }
+                ],
+                "nullable": true
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/TourLeadInputDto"
+                  }
+                ],
+                "nullable": true
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/TourLeadInputDto"
+                  }
+                ],
+                "nullable": true
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/simple-leads": {
+      "post": {
+        "tags": [
+          "SimpleLeads"
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "nullable": true
+                  }
+                }
+              },
+              "encoding": {
+                "email": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v1/validation/email": {
+      "post": {
+        "tags": [
+          "Validation"
+        ],
+        "parameters": [
+          {
+            "name": "appName",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/EmailValidationDto"
+                  }
+                ],
+                "nullable": true
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/EmailValidationDto"
+                  }
+                ],
+                "nullable": true
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/EmailValidationDto"
+                  }
+                ],
+                "nullable": true
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailValidationResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailValidationResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailValidationResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/validation/phone": {
+      "post": {
+        "tags": [
+          "Validation"
+        ],
+        "parameters": [
+          {
+            "name": "appName",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/PhoneNumberValidationDto"
+                  }
+                ],
+                "nullable": true
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/PhoneNumberValidationDto"
+                  }
+                ],
+                "nullable": true
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/PhoneNumberValidationDto"
+                  }
+                ],
+                "nullable": true
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PhoneValidationResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PhoneValidationResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PhoneValidationResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ContactPreferences": {
+        "enum": [
+          "None",
+          "Phone",
+          "Email",
+          "Sms"
+        ],
+        "type": "string"
+      },
+      "FranchiseLead": {
+        "required": [
+          "email",
+          "firstName",
+          "g-recaptcha-response",
+          "lastName",
+          "liquidity",
+          "phone",
+          "zip"
+        ],
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "zip": {
+            "type": "string"
+          },
+          "comments": {
+            "type": "string",
+            "nullable": true
+          },
+          "userOptedIn": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ContactPreferences"
+              }
+            ]
+          },
+          "ipAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "gaCampaign": {
+            "type": "string",
+            "nullable": true
+          },
+          "gaClientID": {
+            "type": "string",
+            "nullable": true
+          },
+          "gaLandingPage": {
+            "type": "string",
+            "nullable": true
+          },
+          "gaMedium": {
+            "type": "string",
+            "nullable": true
+          },
+          "gaSource": {
+            "type": "string",
+            "nullable": true
+          },
+          "g-recaptcha-response": {
+            "type": "string"
+          },
+          "liquidity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "leadMarketsofInterest": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          },
+          "otherMarketsofInterest": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ReferredBy": {
+        "enum": [
+          "Blog",
+          "CommunityEvent",
+          "Facebook",
+          "Internet",
+          "News",
+          "OpenHouse",
+          "Postcard",
+          "PrCoverage",
+          "PrintAd",
+          "Radio",
+          "Referral",
+          "Sign",
+          "TvCommercial",
+          "Twitter",
+          "YellowPages",
+          "Other",
+          "EmployeeFamily"
+        ],
+        "type": "string"
+      },
+      "ChildLead": {
+        "required": [
+          "dateOfBirth",
+          "firstName",
+          "lastName"
+        ],
+        "type": "object",
+        "properties": {
+          "schoolChildLeadId": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DaysOfInterest": {
+        "enum": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "ToBeDetermined"
+        ],
+        "type": "string"
+      },
+      "LeadDto": {
+        "type": "object",
+        "properties": {
+          "schoolId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "additionalRemarks": {
+            "type": "string",
+            "nullable": true
+          },
+          "streetLine1": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "zipCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "mobilePhone": {
+            "type": "string",
+            "nullable": true
+          },
+          "homePhone": {
+            "type": "string",
+            "nullable": true
+          },
+          "workPhone": {
+            "type": "string",
+            "nullable": true
+          },
+          "primaryPhone": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "emailAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "referredBy": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ReferredBy"
+              }
+            ],
+            "nullable": true
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "contactPreference": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "schoolChildLeads": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ChildLead"
+            },
+            "nullable": true
+          },
+          "programsOfInterest": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "daysOfInterest": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DaysOfInterest"
+            },
+            "nullable": true
+          },
+          "schoolParentLeadId": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdOn": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "guidId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "tourQuestions": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LeadDtoPaginationDto": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LeadDto"
+            },
+            "nullable": true
+          },
+          "total": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProblemDetails": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "detail": {
+            "type": "string",
+            "nullable": true
+          },
+          "instance": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": {}
+      },
+      "Lead": {
+        "required": [
+          "contactPreference",
+          "emailAddress",
+          "firstName",
+          "lastName",
+          "mobilePhone",
+          "reCaptchaResponse",
+          "referredBy",
+          "schoolChildLeads",
+          "schoolId",
+          "startDate",
+          "zipCode"
+        ],
+        "type": "object",
+        "properties": {
+          "homePhone": {
+            "type": "string",
+            "nullable": true
+          },
+          "workPhone": {
+            "type": "string",
+            "nullable": true
+          },
+          "primaryPhone": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "schoolParentLeadId": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true,
+            "deprecated": true
+          },
+          "schoolId": {
+            "minimum": 1,
+            "type": "integer",
+            "format": "int64"
+          },
+          "firstName": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string"
+          },
+          "lastName": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string"
+          },
+          "streetLine1": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "zipCode": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string"
+          },
+          "mobilePhone": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string"
+          },
+          "emailAddress": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "format": "email"
+          },
+          "referredBy": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ReferredBy"
+              }
+            ]
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "contactPreference": {
+            "maximum": 7,
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32"
+          },
+          "schoolChildLeads": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ChildLead"
+            }
+          },
+          "additionalRemarks": {
+            "type": "string",
+            "nullable": true
+          },
+          "programsOfInterest": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "daysOfInterest": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DaysOfInterest"
+            },
+            "nullable": true
+          },
+          "reCaptchaResponse": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "LeadDtoInternal": {
+        "required": [
+          "contactPreference",
+          "emailAddress",
+          "firstName",
+          "lastName",
+          "mobilePhone",
+          "referredBy",
+          "schoolChildLeads",
+          "schoolId",
+          "startDate",
+          "zipCode"
+        ],
+        "type": "object",
+        "properties": {
+          "homePhone": {
+            "type": "string",
+            "nullable": true
+          },
+          "workPhone": {
+            "type": "string",
+            "nullable": true
+          },
+          "primaryPhone": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "schoolParentLeadId": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true,
+            "deprecated": true
+          },
+          "schoolId": {
+            "minimum": 1,
+            "type": "integer",
+            "format": "int64"
+          },
+          "firstName": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string"
+          },
+          "lastName": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string"
+          },
+          "streetLine1": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "zipCode": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string"
+          },
+          "mobilePhone": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string"
+          },
+          "emailAddress": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "format": "email"
+          },
+          "referredBy": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ReferredBy"
+              }
+            ]
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "contactPreference": {
+            "maximum": 7,
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32"
+          },
+          "schoolChildLeads": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ChildLead"
+            }
+          },
+          "additionalRemarks": {
+            "type": "string",
+            "nullable": true
+          },
+          "programsOfInterest": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "daysOfInterest": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DaysOfInterest"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TourLeadChildInput": {
+        "required": [
+          "firstName"
+        ],
+        "type": "object",
+        "properties": {
+          "schoolChildLeadId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "firstName": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TourLeadInputDto": {
+        "type": "object",
+        "properties": {
+          "schoolChildLeads": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TourLeadChildInput"
+            },
+            "nullable": true
+          },
+          "daysOfInterest": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DaysOfInterest"
+            },
+            "nullable": true
+          },
+          "programsOfInterest": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "tourQuestions": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "EmailValidationDto": {
+        "required": [
+          "email"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ValidationRejection": {
+        "enum": [
+          "None",
+          "Soft",
+          "Hard"
+        ],
+        "type": "string"
+      },
+      "ValidationStatus": {
+        "enum": [
+          "NotPerformed",
+          "Valid",
+          "Invalid",
+          "Undetermined"
+        ],
+        "type": "string"
+      },
+      "EmailValidationResult": {
+        "type": "object",
+        "properties": {
+          "integrationAuditLogId": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "rejection": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ValidationRejection"
+              }
+            ]
+          },
+          "providerResult": {
+            "type": "string",
+            "nullable": true
+          },
+          "didYouMean": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "confidenceLevel": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ValidationStatus"
+              }
+            ]
+          },
+          "verboseOutput": {
+            "type": "string",
+            "nullable": true
+          },
+          "succeeded": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PhoneNumberValidationDto": {
+        "required": [
+          "number"
+        ],
+        "type": "object",
+        "properties": {
+          "number": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PhoneValidationResult": {
+        "type": "object",
+        "properties": {
+          "integrationAuditLogId": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "rejection": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ValidationRejection"
+              }
+            ]
+          },
+          "phoneType": {
+            "type": "string",
+            "nullable": true
+          },
+          "providerResult": {
+            "type": "string",
+            "nullable": true
+          },
+          "formattedPhoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "confidenceLevel": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ValidationStatus"
+              }
+            ]
+          },
+          "succeeded": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "name": "Ocp-Apim-Subscription-Key",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "ApiKeyAuth": []
+    }
+  ]
+}

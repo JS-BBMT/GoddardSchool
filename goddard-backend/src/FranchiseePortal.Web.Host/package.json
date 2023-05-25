@@ -1,0 +1,24 @@
+{
+  "name": "franchiseeportal.franchiseeportalapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "generate-authorization-api-client:aspnetcore": "npx @openapitools/openapi-generator-cli generate -g csharp-netcore -i openapi_authorization.json -o ../api/FranchiseePortal.AuthorizationWebApiClient --package-name FranchiseePortal.AuthorizationWebApiClient",
+    "generate-content-api-client:aspnetcore": "npx @openapitools/openapi-generator-cli generate -g csharp-netcore -i openapi_content.json -o ../api/FranchiseePortal.ContentWebApiClient --package-name FranchiseePortal.ContentWebApiClient",
+    "generate-features-api-client:aspnetcore": "npx @openapitools/openapi-generator-cli generate -g csharp-netcore -i openapi_schoolfeatures.json -o ../api/FranchiseePortal.FeaturesWebApiClient --package-name FranchiseePortal.FeaturesWebApiClient",
+    "generate-schools-api-client:aspnetcore": "npx @openapitools/openapi-generator-cli generate -g csharp-netcore -i openapi_schools.json -o ../api/FranchiseePortal.SchoolsWebApiClient --package-name FranchiseePortal.SchoolsWebApiClient",
+    "generate-faculties-api-client:aspnetcore": "npx @openapitools/openapi-generator-cli generate -g csharp-netcore -i openapi_faculty.json -o ../api/FranchiseePortal.FacultiesWebApiClient --package-name FranchiseePortal.FacultiesWebApiClient",
+    "generate-testimonials-api-client:aspnetcore": "npx @openapitools/openapi-generator-cli generate -g csharp-netcore -i openapi_schooltestimonials.json -o ../api/FranchiseePortal.TestimonialsWebApiClient --package-name FranchiseePortal.TestimonialsWebApiClient",
+    "generate-careers-api-client:aspnetcore": "npx @openapitools/openapi-generator-cli generate -g csharp-netcore -i openapi_careers.json -o ../api/FranchiseePortal.CareersWebApiClient --package-name FranchiseePortal.CareersWebApiClient",
+    "generate-school-events-api-client:aspnetcore": "npx @openapitools/openapi-generator-cli generate -g csharp-netcore -i openapi_schoolevents.json -o ../api/FranchiseePortal.SchoolEventsWebApiClient --package-name FranchiseePortal.SchoolEventsWebApiClient",
+    "generate-tours-api-client:aspnetcore": "npx @openapitools/openapi-generator-cli generate -g csharp-netcore -i openapi_tours.json -o ../api/FranchiseePortal.ToursWebApiClient --package-name FranchiseePortal.ToursWebApiClient -t ../api/custom-templates",
+    "generate-leads-api-client:aspnetcore": "npx @openapitools/openapi-generator-cli generate -g csharp-netcore -i openapi_leads.json -o ../api/FranchiseePortal.LeadsWebApiClient --package-name FranchiseePortal.LeadsWebApiClient"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.5.1"
+  }
+}
